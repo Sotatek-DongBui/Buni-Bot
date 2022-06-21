@@ -6,6 +6,8 @@ import { configs } from './config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.setGlobalPrefix(configs.globalPath);
+
   await app.listen(configs.port, () => {
     console.log('listening on port ' + configs.port);
   });
