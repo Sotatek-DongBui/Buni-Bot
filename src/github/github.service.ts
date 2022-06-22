@@ -34,9 +34,7 @@ export class GithubService {
               `<b>Title:</b> <font color="#2eeb15">${title}</font>`,
               `<b>Author:</b> ${user.login}`,
               `<b>Update by:</b> ${sender.login}`,
-              `<b>Action:</b> <font color="${
-                actionColors[prAction] ?? '#168ed9'
-              }">${prAction}</font>`,
+              `<b>Action:</b> <font color="${actionColors[prAction] ?? '#168ed9'}">${prAction}</font>`,
               `<i>Branch:</i> <font color="#0000ff">${head.ref} -> ${base.ref}</font>`,
             ].join('<br>'),
           },
