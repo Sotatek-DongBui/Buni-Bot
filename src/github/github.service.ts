@@ -4,20 +4,20 @@ import { IPayloadGithub } from 'interfaces/payload-github';
 @Injectable()
 export class GithubService {
   private _buildHeaders = (payload: IPayloadGithub) => {
-    const { action } = payload;
+    const { repository } = payload;
+    const { name } = repository;
 
     return {
       title: 'Github Bot',
-      subtitle: action,
+      subtitle: name,
       imageUrl: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJgRV_cdgW7a3tevLgJsiKWmTYQUWus08uFMxmC5CZfHHBulp883_CX7L6r-HGnhxE0LE&usqp=CAU`,
       imageStyle: 'IMAGE',
     };
   };
 
   private _buildSections = (payload: IPayloadGithub) => {
-    const { pull_request, repository, sender, action } = payload;
+    const { pull_request, sender, action } = payload;
     const { title, state, html_url, base, head, user, merged } = pull_request;
-    const { name } = repository;
     const prAction = merged ? 'merged' : action;
 
     const actionColors = {
@@ -30,7 +30,6 @@ export class GithubService {
         {
           textParagraph: {
             text: [
-              `<b>Project:</b> <font color="#ff0000">${name}</font>`,
               `<b>Title:</b> <font color="#2eeb15">${title}</font>`,
               `<b>Author:</b> ${user.login}`,
               `<b>Update by:</b> ${sender.login}`,
