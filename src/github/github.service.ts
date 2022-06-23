@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { configs } from 'config';
 import { IPayloadGithub } from 'interfaces/payload-github';
 
 @Injectable()
@@ -49,6 +50,7 @@ export class GithubService {
               },
             },
           },
+          ...(merged && this._buildMergeBtn(payload)),
         },
       ],
     };
@@ -65,5 +67,35 @@ export class GithubService {
     };
 
     return data;
+  };
+
+  private _getProject = (repoName: string) => {
+    switch (repoName) {
+      case 'buni-api-islands':
+        return 'island';
+      default:
+        throw new Error();
+    }
+  };
+
+  private _buildMergeBtn = (payload: IPayloadGithub) => {
+    const { repository, pull_request } = payload;
+    const { name } = repository;
+    const { base } = pull_request;
+    const { ref } = base;
+    return {
+      buttons: [
+        {
+          textButton: {
+            text: 'Merge dev',
+            onClick: {
+              action: {
+                openLink: { url: `${configs.host}/dev/${this._getProject(name)}?branch=${ref}` },
+              },
+            },
+          },
+        },
+      ],
+    };
   };
 }
