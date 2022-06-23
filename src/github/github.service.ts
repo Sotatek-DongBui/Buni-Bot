@@ -84,7 +84,7 @@ export class GithubService {
     const { base } = pull_request;
     const { ref } = base;
     return {
-      buttons: {
+      button: {
         textButton: {
           text: 'Merge dev',
           onClick: {
