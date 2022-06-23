@@ -88,7 +88,7 @@ export class GithubService {
         textButton: {
           text: 'Merge dev',
           onClick: {
-            openLink: { url: `${configs.host}/dev/${this._getProject(name)}?branch=${ref}` },
+            openLink: { url: `${configs.host}/deployments/dev/${this._getProject(name)}?branch=${ref}` },
           },
         },
       },
