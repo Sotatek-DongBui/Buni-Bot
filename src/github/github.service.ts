@@ -84,18 +84,16 @@ export class GithubService {
     const { base } = pull_request;
     const { ref } = base;
     return {
-      buttons: [
-        {
-          textButton: {
-            text: 'Merge dev',
-            onClick: {
-              action: {
-                openLink: { url: `${configs.host}/dev/${this._getProject(name)}?branch=${ref}` },
-              },
+      buttons: {
+        textButton: {
+          text: 'Merge dev',
+          onClick: {
+            action: {
+              openLink: { url: `${configs.host}/dev/${this._getProject(name)}?branch=${ref}` },
             },
           },
         },
-      ],
+      },
     };
   };
 }
