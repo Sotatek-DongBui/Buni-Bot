@@ -49,8 +49,8 @@ export class GithubService {
                 url: html_url,
               },
             },
+            ...(merged && this._buildMergeBtn(payload)),
           },
-          ...(merged && this._buildMergeBtn(payload)),
         },
       ],
     };
