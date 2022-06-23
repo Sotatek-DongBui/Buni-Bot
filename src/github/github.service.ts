@@ -74,7 +74,7 @@ export class GithubService {
       case 'buni-api-islands':
         return 'island';
       default:
-        throw new Error();
+        throw new Error(`${repoName} is not supported`);
     }
   };
 
@@ -88,9 +88,7 @@ export class GithubService {
         textButton: {
           text: 'Merge dev',
           onClick: {
-            action: {
-              openLink: { url: `${configs.host}/dev/${this._getProject(name)}?branch=${ref}` },
-            },
+            openLink: { url: `${configs.host}/dev/${this._getProject(name)}?branch=${ref}` },
           },
         },
       },
