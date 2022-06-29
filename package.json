@@ -22,8 +22,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "console:dev": "ts-node -r tsconfig-paths/register src/console.ts",
     "command:dev": "ts-node -r tsconfig-paths/register src/start.command-app.ts",
-    "console": "node dist/console.js",
-    "postinstall": "husky install"
+    "console": "node dist/console.js"
   },
   "dependencies": {
     "@nestjs/common": "8.0.0",
@@ -55,7 +54,6 @@
     "eslint": "^7.30.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "husky": "^7.0.4",
     "jest": "^27.0.6",
     "prettier": "^2.3.2",
     "supertest": "^6.1.3",
