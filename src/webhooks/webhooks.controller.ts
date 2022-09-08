@@ -10,4 +10,11 @@ export class WebhooksController {
     await this.webhooksService.notiGithubWebhook(payload);
     return 'ok';
   }
+
+  @Post('demo1')
+  async webhookDemo1(@Body() req: any) {
+    console.log('webhooks-demo1');
+    console.log(JSON.stringify(req));
+    return 'ok';
+  }
 }
